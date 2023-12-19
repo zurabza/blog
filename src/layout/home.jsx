@@ -45,7 +45,7 @@ function Home() {
             <h3 className={styles.description}>6 თვის შემდეგ ყველის ბრმა დეგუსტაციის დროც დადგა. მაქსიმალური სიზუსტისთვის, ეს პროცესი...</h3>
 
             <a>
-              სრულად ნახვა <img src="" alt="arrow" />
+              სრულად ნახვა <img src={Arrow} alt="arrow" />
             </a>
           </div>
 

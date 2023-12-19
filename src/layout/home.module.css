@@ -78,19 +78,25 @@
 }
 
 .blogpost .name {
-  margin-top: 1rem;
-  font-size: 1.5rem;
+  margin-top: 1.1rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  opacity: 0.96;
 }
 
 .blogpost .date {
-  font-size: 1rem;
+  font-size: 0.9rem;
   margin-top: 0.75rem;
   color: #85858d;
+  font-weight: 200;
 }
 
 .blogpost .title {
-  margin-top: 1.25rem;
-  font-size: 1.6rem;
+  margin-top: 1.35rem;
+  font-size: 1.75rem;
+  font-weight: 600;
+  opacity: 0.92;
+  color: #1a1a1f;
 }
 
 .blogpost .filters {
@@ -105,7 +111,7 @@
   font-size: 1rem;
   background-color: #ffb82f14;
   color: #d6961c;
-  padding: 0.5rem 1rem;
+  padding: 0.7rem 1.2rem;
   border: none;
   outline: none;
   border-radius: 30px;
@@ -120,6 +126,7 @@
 .blogpost .description {
   color: #404049;
   margin-bottom: 1.5rem;
+  font-weight: 100;
 }
 
 .blogpost a {
