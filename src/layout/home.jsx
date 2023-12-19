@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import useFetch from "use-http";
 
 import defaultBlogpostImg from "../assets/default-for-blogpost.jpg";
 
@@ -8,6 +9,10 @@ import Arrow from "../assets/Arrow.png";
 import styles from "./home.module.css";
 
 function Home() {
+  const [categories, setCategories] = useState([])
+
+  const { loading, error, data = [] } = useFetch("https://example.com/todos", options, []);
+
   return (
     <div className={styles.container}>
       <div className={styles.cover}>
