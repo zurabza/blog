@@ -1,7 +1,9 @@
+import Home from "./layout/home"
+
 function App() {
   return (
     <div>
-      BLOG
+      <Home />
     </div>
   )
 }
