@@ -53,6 +53,16 @@ function Home() {
               {category.title}
             </button>
           ))}
+
+          {categories.length == 0 && (
+            <>
+              <button className={`${styles.filter} ${styles.loadingFilter}`}>...</button>
+              <button className={`${styles.filter} ${styles.loadingFilter} ${styles.green}`}>...</button>
+              <button className={`${styles.filter} ${styles.loadingFilter} ${styles.purple}`}>...</button>
+              <button className={`${styles.filter} ${styles.loadingFilter} ${styles.red}`}>...</button>
+              <button className={`${styles.filter} ${styles.loadingFilter} ${styles.lightGreen}`}>...</button>
+            </>
+          )}
         </div>
 
         <div className={styles.blogposts}>
