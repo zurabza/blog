@@ -1,82 +1,91 @@
 import React from "react";
 
+import defaultBlogpostImg from "../assets/default-for-blogpost.jpg";
+
+import blogCover from "../assets/blog-cover.png";
+import Arrow from "../assets/Arrow.png";
+
+import styles from "./home.module.css";
+
 function Home() {
   return (
-    <div>
-      <div>
+    <div className={styles.container}>
+      <div className={styles.cover}>
         <h1>ბლოგი</h1>
 
-        <img src="" alt="cover-image" />
+        <img src={blogCover} alt="cover-image" />
       </div>
 
-      <div>
-        <div>
-          <button>მარკეტი</button>
-          <button>აპლიკაცია</button>
-          <button>ხეოლვნური ინტელექტი</button>
-          <button>UI/UX</button>
-          <button>კვლევა</button>
-          <button>Figma</button>
+      <div className={styles.content}>
+        <div className={styles.filters}>
+          <button className={styles.filter}>მარკეტი</button>
+          <button className={styles.filter}>მარკეტი</button>
+          <button className={styles.filter}>მარკეტი</button>
+          <button className={styles.filter}>მარკეტი</button>
+          <button className={styles.filter}>მარკეტი</button>
+          <button className={styles.filter}>აპლიკაცია</button>
+          <button className={styles.filter}>ხეოლვნური ინტელექტი</button>
+          <button className={styles.filter}>UI/UX</button>
         </div>
 
-        <div>
-          <div>
-            <img src={defaultImg} alt="blogpost-cover" />
-            <h4>ლილე კვარაცხელია</h4>
-            <h6>02.11.2023</h6>
+        <div className={styles.blogposts}>
+          <div className={styles.blogpost}>
+            <img src={defaultBlogpostImg} alt="blogpost-cover" />
+            <h4 className={styles.name}>ლილე კვარაცხელია</h4>
+            <h6 className={styles.date}>02.11.2023</h6>
 
-            <h2>EOMM-ის მრჩეველთა საბჭოს ნინო ეგაძე შეუერთდა</h2>
+            <h2 className={styles.title}>EOMM-ის მრჩეველთა საბჭოს ნინო ეგაძე შეუერთდა</h2>
 
-            <div>
-              <button>UI/UX</button>
-              <button>კვლევა</button>
-              <button>Figma</button>
+            <div className={styles.filters}>
+              <button className={styles.filter}>UI/UX</button>
+              <button className={styles.filter}>კვლევა</button>
+              <button className={styles.filter}>Figma</button>
             </div>
 
-            <h3>Copy 6 თვის შემდეგ ყველის ბრმა დეგუსტაციის დროც დადგა. მაქსიმალური სიზუსტისთვის, ეს პროცესი...</h3>
+            <h3 className={styles.description}>6 თვის შემდეგ ყველის ბრმა დეგუსტაციის დროც დადგა. მაქსიმალური სიზუსტისთვის, ეს პროცესი...</h3>
 
             <a>
               სრულად ნახვა <img src="" alt="arrow" />
             </a>
           </div>
 
-          <div>
-            <img src="" alt="blogpost-cover" />
-            <h4>ლილე კვარაცხელია</h4>
-            <h6>02.11.2023</h6>
+          <div className={styles.blogpost}>
+            <img src={defaultBlogpostImg} alt="blogpost-cover" />
+            <h4 className={styles.name}>ლილე კვარაცხელია</h4>
+            <h6 className={styles.date}>02.11.2023</h6>
 
-            <h2>EOMM-ის მრჩეველთა საბჭოს ნინო ეგაძე შეუერთდა</h2>
+            <h2 className={styles.title}>EOMM-ის მრჩეველთა საბჭოს ნინო ეგაძე შეუერთდა</h2>
 
-            <div>
-              <button>UI/UX</button>
-              <button>კვლევა</button>
-              <button>Figma</button>
+            <div className={styles.filters}>
+              <button className={styles.filter}>UI/UX</button>
+              <button className={styles.filter}>კვლევა</button>
+              <button className={styles.filter}>Figma</button>
             </div>
 
-            <h3>Copy 6 თვის შემდეგ ყველის ბრმა დეგუსტაციის დროც დადგა. მაქსიმალური სიზუსტისთვის, ეს პროცესი...</h3>
+            <h3 className={styles.description}>6 თვის შემდეგ ყველის ბრმა დეგუსტაციის დროც დადგა. მაქსიმალური სიზუსტისთვის, ეს პროცესი...</h3>
 
             <a>
-              სრულად ნახვა <img src="" alt="arrow" />
+              სრულად ნახვა <img src={Arrow} alt="arrow" />
             </a>
           </div>
 
-          <div>
-            <img src={defaultImg} alt="blogpost-cover" />
-            <h4>ლილე კვარაცხელია</h4>
-            <h6>02.11.2023</h6>
+          <div className={styles.blogpost}>
+            <img src={defaultBlogpostImg} alt="blogpost-cover" />
+            <h4 className={styles.name}>ლილე კვარაცხელია</h4>
+            <h6 className={styles.date}>02.11.2023</h6>
 
-            <h2>EOMM-ის მრჩეველთა საბჭოს ნინო ეგაძე შეუერთდა</h2>
+            <h2 className={styles.title}>EOMM-ის მრჩეველთა საბჭოს ნინო ეგაძე შეუერთდა</h2>
 
-            <div>
-              <button>UI/UX</button>
-              <button>კვლევა</button>
-              <button>Figma</button>
+            <div className={styles.filters}>
+              <button className={styles.filter}>UI/UX</button>
+              <button className={styles.filter}>კვლევა</button>
+              <button className={styles.filter}>Figma</button>
             </div>
 
-            <h3>Copy 6 თვის შემდეგ ყველის ბრმა დეგუსტაციის დროც დადგა. მაქსიმალური სიზუსტისთვის, ეს პროცესი...</h3>
+            <h3 className={styles.description}>6 თვის შემდეგ ყველის ბრმა დეგუსტაციის დროც დადგა. მაქსიმალური სიზუსტისთვის, ეს პროცესი...</h3>
 
             <a>
-              სრულად ნახვა <img src="" alt="arrow" />
+              სრულად ნახვა <img src={Arrow} alt="arrow" />
             </a>
           </div>
         </div>

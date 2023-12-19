@@ -1,0 +1,138 @@
+:root {
+  --home-background-color: #e4e3eb;
+
+  --page-margin: 8.5rem;
+}
+
+.container {
+  background-color: var(--background-color);
+}
+
+.cover {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--page-margin);
+  padding-top: 1rem;
+}
+
+.cover h1 {
+  font-size: 4.5rem;
+  position: relative;
+  top: 0.75rem;
+}
+
+.cover img {
+  padding-bottom: 2rem;
+  position: relative;
+  top: 2.75rem;
+  width: 50rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.filters {
+  display: flex;
+  margin: 4rem auto;
+  gap: 2rem;
+  padding: 1.5rem 0;
+  max-width: 40vw;
+  overflow: auto;
+}
+
+.filters::-webkit-scrollbar {
+  height: 4px;
+}
+
+.filters::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+.filters::-webkit-scrollbar-thumb {
+  background: rgb(47, 47, 47);
+  border-radius: 10px;
+}
+
+.blogposts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 3rem;
+  grid-row-gap: 4rem;
+  margin: 0 var(--page-margin);
+
+  padding-bottom: 6rem;
+}
+
+.blogpost {
+}
+
+.blogpost img {
+  width: 100%;
+  height: 27.5rem;
+  object-fit: cover;
+  border-radius: 12.5px;
+}
+
+.blogpost .name {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+}
+
+.blogpost .date {
+  font-size: 1rem;
+  margin-top: 0.75rem;
+  color: #85858d;
+}
+
+.blogpost .title {
+  margin-top: 1.25rem;
+  font-size: 1.6rem;
+}
+
+.blogpost .filters {
+  padding: 0;
+  width: fit-content;
+
+  margin: 1.5rem;
+  margin-left: 0;
+}
+
+.filter {
+  font-size: 1rem;
+  background-color: #ffb82f14;
+  color: #d6961c;
+  padding: 0.5rem 1rem;
+  border: none;
+  outline: none;
+  border-radius: 30px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.selected {
+  border: 1px solid black;
+}
+
+.blogpost .description {
+  color: #404049;
+  margin-bottom: 1.5rem;
+}
+
+.blogpost a {
+  color: #5d37f3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  font-size: 1rem;
+}
+
+.blogpost a img {
+  width: 22.5px;
+  height: 22.5px;
+  margin-left: 0.2rem;
+}
