@@ -1,7 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import useFetch from "use-http";
-
-import defaultBlogpostImg from "../assets/default-for-blogpost.jpg";
 
 import blogCover from "../assets/blog-cover.png";
 import Arrow from "../assets/Arrow.png";
@@ -9,9 +7,36 @@ import Arrow from "../assets/Arrow.png";
 import styles from "./home.module.css";
 
 function Home() {
-  const [categories, setCategories] = useState([])
+  const API_TOKEN = import.meta.env.VITE_TOKEN;
+  const request_url = `https://api.blog.redberryinternship.ge/api`;
 
-  const { loading, error, data = [] } = useFetch("https://example.com/todos", options, []);
+  const [categories, setCategories] = useState([]);
+  const [blogs, setBlogs] = useState([]);
+
+  const { get, response } = useFetch(request_url, {
+    headers: {
+      Authorization: `Bearer ${API_TOKEN}`,
+    },
+  });
+
+  useEffect(() => {
+    initializeCategories();
+  }, []);
+
+  async function initializeCategories() {
+    const initialCategories = await get("/categories");
+    if (response.ok) setCategories(initialCategories.data);
+  }
+
+  useEffect(() => {
+    initializeBlogs();
+  }, []);
+
+  async function initializeBlogs() {
+    const initialBlogs = await get(`/blogs`);
+    console.log("blogs", initialBlogs);
+    if (response.ok) setBlogs(initialBlogs.data);
+  }
 
   return (
     <div className={styles.container}>
@@ -23,76 +48,37 @@ function Home() {
 
       <div className={styles.content}>
         <div className={styles.filters}>
-          <button className={styles.filter}>მარკეტი</button>
-          <button className={styles.filter}>მარკეტი</button>
-          <button className={styles.filter}>მარკეტი</button>
-          <button className={styles.filter}>მარკეტი</button>
-          <button className={styles.filter}>მარკეტი</button>
-          <button className={styles.filter}>აპლიკაცია</button>
-          <button className={styles.filter}>ხეოლვნური ინტელექტი</button>
-          <button className={styles.filter}>UI/UX</button>
+          {categories?.map((category) => (
+            <button key={category.id} className={styles.filter} style={{ color: category.text_color, backgroundColor: category.background_color }}>
+              {category.title}
+            </button>
+          ))}
         </div>
 
         <div className={styles.blogposts}>
-          <div className={styles.blogpost}>
-            <img src={defaultBlogpostImg} alt="blogpost-cover" />
-            <h4 className={styles.name}>ლილე კვარაცხელია</h4>
-            <h6 className={styles.date}>02.11.2023</h6>
+          {blogs?.map((blog) => (
+            <div key={blog.id} className={styles.blogpost}>
+              <img src={blog.image} alt="blogpost-cover" />
+              <h4 className={styles.author}>{blog.author}</h4>
+              <h6 className={styles.date}>{blog.publish_date}</h6>
 
-            <h2 className={styles.title}>EOMM-ის მრჩეველთა საბჭოს ნინო ეგაძე შეუერთდა</h2>
+              <h2 className={styles.title}>{blog.title}</h2>
 
-            <div className={styles.filters}>
-              <button className={styles.filter}>UI/UX</button>
-              <button className={styles.filter}>კვლევა</button>
-              <button className={styles.filter}>Figma</button>
+              <div className={styles.filters}>
+                {blog.categories?.map((filter) => (
+                  <button key={filter.id} className={styles.filter} style={{ color: filter.text_color, backgroundColor: filter.background_color }}>
+                    {filter.name}
+                  </button>
+                ))}
+              </div>
+
+              <h3 className={styles.description}>{blog.description}</h3>
+
+              <a>
+                სრულად ნახვა <img src={Arrow} alt="arrow" />
+              </a>
             </div>
-
-            <h3 className={styles.description}>6 თვის შემდეგ ყველის ბრმა დეგუსტაციის დროც დადგა. მაქსიმალური სიზუსტისთვის, ეს პროცესი...</h3>
-
-            <a>
-              სრულად ნახვა <img src={Arrow} alt="arrow" />
-            </a>
-          </div>
-
-          <div className={styles.blogpost}>
-            <img src={defaultBlogpostImg} alt="blogpost-cover" />
-            <h4 className={styles.name}>ლილე კვარაცხელია</h4>
-            <h6 className={styles.date}>02.11.2023</h6>
-
-            <h2 className={styles.title}>EOMM-ის მრჩეველთა საბჭოს ნინო ეგაძე შეუერთდა</h2>
-
-            <div className={styles.filters}>
-              <button className={styles.filter}>UI/UX</button>
-              <button className={styles.filter}>კვლევა</button>
-              <button className={styles.filter}>Figma</button>
-            </div>
-
-            <h3 className={styles.description}>6 თვის შემდეგ ყველის ბრმა დეგუსტაციის დროც დადგა. მაქსიმალური სიზუსტისთვის, ეს პროცესი...</h3>
-
-            <a>
-              სრულად ნახვა <img src={Arrow} alt="arrow" />
-            </a>
-          </div>
-
-          <div className={styles.blogpost}>
-            <img src={defaultBlogpostImg} alt="blogpost-cover" />
-            <h4 className={styles.name}>ლილე კვარაცხელია</h4>
-            <h6 className={styles.date}>02.11.2023</h6>
-
-            <h2 className={styles.title}>EOMM-ის მრჩეველთა საბჭოს ნინო ეგაძე შეუერთდა</h2>
-
-            <div className={styles.filters}>
-              <button className={styles.filter}>UI/UX</button>
-              <button className={styles.filter}>კვლევა</button>
-              <button className={styles.filter}>Figma</button>
-            </div>
-
-            <h3 className={styles.description}>6 თვის შემდეგ ყველის ბრმა დეგუსტაციის დროც დადგა. მაქსიმალური სიზუსტისთვის, ეს პროცესი...</h3>
-
-            <a>
-              სრულად ნახვა <img src={Arrow} alt="arrow" />
-            </a>
-          </div>
+          ))}
         </div>
       </div>
     </div>
