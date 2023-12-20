@@ -3,6 +3,14 @@
   src: url("assets/FiraGO-Medium.woff2") format("woff2");
 }
 
+:root {
+  --background-color: #FBFBFE;
+}
+
+body {
+  background-color: var(--background-color);
+}
+
 * {
   font-family: firoGo;
 

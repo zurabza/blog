@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 8rem;
+  background-color: white;
+}
+
+.container img {
+    width: 11rem;
+}
+
+.container button {
+  background-color: #5d37f3;
+  color: white;
+  font-weight: 100;
+  font-size: 1.072rem;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  padding: 12px 22px;
+  cursor: pointer;
+}

@@ -1,13 +1,7 @@
 :root {
-  --home-background-color: #e4e3eb;
-
   --page-margin: 8.5rem;
 
   --pulsing-animation-color: 255, 184, 47;
-}
-
-.container {
-  background-color: var(--background-color);
 }
 
 .cover {
