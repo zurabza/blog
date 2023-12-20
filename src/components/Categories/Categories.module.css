@@ -1,0 +1,63 @@
+.container {
+  display: flex;
+  margin: 4rem auto;
+  gap: 2rem;
+  padding: 1.5rem 0;
+  max-width: 40vw;
+  overflow: auto;
+}
+
+.container::-webkit-scrollbar {
+  height: 4px;
+}
+
+.container::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+.container::-webkit-scrollbar-thumb {
+  background: rgb(47, 47, 47);
+  border-radius: 10px;
+}
+
+.loadingFilter {
+  animation: pulse 0.85s ease-out infinite;
+}
+
+.green {
+  --pulsing-animation-color: 28, 214, 125;
+}
+
+.red {
+  --pulsing-animation-color: 250, 87, 87;
+}
+
+.purple {
+  --pulsing-animation-color: 250, 87, 87;
+}
+
+.lightGreen {
+  --pulsing-animation-color: 8, 210, 174;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(var(--pulsing-animation-color), 0.7);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(var(--pulsing-animation-color), 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(var(--pulsing-animation-color), 0);
+  }
+}
+
+.selected {
+  border: 1px solid black;
+}

@@ -1,17 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import useFetch from "use-http";
 
-import blogCover from "../assets/blog-cover.png";
-import Arrow from "../assets/Arrow.png";
+import Categories from "../components/Categories";
+import Blogposts from "../components/Blogposts";
 
 import styles from "./home.module.css";
+import blogCover from "../assets/blog-cover.png";
 
 function Home() {
   const API_TOKEN = import.meta.env.VITE_TOKEN;
-  const request_url = `https://api.blog.redberryinternship.ge/api`;
-
-  const [categories, setCategories] = useState([]);
-  const [blogs, setBlogs] = useState([]);
+  const request_url = import.meta.env.VITE_REQUEST_URL;
 
   const { get, response } = useFetch(request_url, {
     headers: {
@@ -19,23 +17,10 @@ function Home() {
     },
   });
 
-  useEffect(() => {
-    initializeCategories();
-  }, []);
-
-  async function initializeCategories() {
-    const initialCategories = await get("/categories");
-    if (response.ok) setCategories(initialCategories.data);
-  }
-
-  useEffect(() => {
-    initializeBlogs();
-  }, []);
-
-  async function initializeBlogs() {
-    const initialBlogs = await get(`/blogs`);
-    console.log("blogs", initialBlogs);
-    if (response.ok) setBlogs(initialBlogs.data);
+  // GET fetch function (path - api path; setData - useState setter function)
+  async function initializeData(path, setData) {
+    const initialData = await get(path);
+    if (response.ok) setData(initialData.data);
   }
 
   return (
@@ -47,49 +32,9 @@ function Home() {
       </div>
 
       <div className={styles.content}>
-        <div className={styles.filters}>
-          {categories?.map((category) => (
-            <button key={category.id} className={styles.filter} style={{ color: category.text_color, backgroundColor: category.background_color }}>
-              {category.title}
-            </button>
-          ))}
+        <Categories initializeData={initializeData} />
 
-          {categories.length == 0 && (
-            <>
-              <button className={`${styles.filter} ${styles.loadingFilter}`}>...</button>
-              <button className={`${styles.filter} ${styles.loadingFilter} ${styles.green}`}>...</button>
-              <button className={`${styles.filter} ${styles.loadingFilter} ${styles.purple}`}>...</button>
-              <button className={`${styles.filter} ${styles.loadingFilter} ${styles.red}`}>...</button>
-              <button className={`${styles.filter} ${styles.loadingFilter} ${styles.lightGreen}`}>...</button>
-            </>
-          )}
-        </div>
-
-        <div className={styles.blogposts}>
-          {blogs?.map((blog) => (
-            <div key={blog.id} className={styles.blogpost}>
-              <img src={blog.image} alt="blogpost-cover" />
-              <h4 className={styles.author}>{blog.author}</h4>
-              <h6 className={styles.date}>{blog.publish_date}</h6>
-
-              <h2 className={styles.title}>{blog.title}</h2>
-
-              <div className={styles.filters}>
-                {blog.categories?.map((filter) => (
-                  <button key={filter.id} className={styles.filter} style={{ color: filter.text_color, backgroundColor: filter.background_color }}>
-                    {filter.name}
-                  </button>
-                ))}
-              </div>
-
-              <h3 className={styles.description}>{blog.description}</h3>
-
-              <a>
-                სრულად ნახვა <img src={Arrow} alt="arrow" />
-              </a>
-            </div>
-          ))}
-        </div>
+        <Blogposts initializeData={initializeData} />
       </div>
     </div>
   );
