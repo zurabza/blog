@@ -8,20 +8,6 @@ import styles from "./home.module.css";
 import blogCover from "../assets/blog-cover.png";
 
 function Home() {
-  const API_TOKEN = import.meta.env.VITE_TOKEN;
-  const request_url = import.meta.env.VITE_REQUEST_URL;
-
-  const { get, response } = useFetch(request_url, {
-    headers: {
-      Authorization: `Bearer ${API_TOKEN}`,
-    },
-  });
-
-  // GET fetch function (path - api path; setData - useState setter function)
-  async function initializeData(path, setData) {
-    const initialData = await get(path);
-    if (response.ok) setData(initialData.data);
-  }
 
   return (
     <div className={styles.container}>
@@ -32,9 +18,9 @@ function Home() {
       </div>
 
       <div className={styles.content}>
-        <Categories initializeData={initializeData} />
+        <Categories />
 
-        <Blogposts initializeData={initializeData} />
+        <Blogposts />
       </div>
     </div>
   );

@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Categories.module.css";
 
-function Categories({ initializeData }) {
+import { useApi } from "../../context/apiProviderContext";
+
+function Categories() {
   const [categories, setCategories] = useState([]);
+
+  const { initializeData } = useApi();
 
   useEffect(() => {
     initializeData("/categories", setCategories);

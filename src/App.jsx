@@ -1,13 +1,15 @@
-import Navbar from "./components/Navbar"
-import Home from "./layout/home"
+import Navbar from "./components/Navbar";
+import Home from "./layout/home";
+
+import { ApiProvider } from "./context/apiProviderContext";
 
 function App() {
   return (
-    <div>
+    <ApiProvider>
       <Navbar />
       <Home />
-    </div>
-  )
+    </ApiProvider>
+  );
 }
 
-export default App
+export default App;

@@ -3,8 +3,12 @@ import React, { useState, useEffect } from "react";
 import styles from "./Blogposts.module.css";
 import Arrow from "../../assets/Arrow.png";
 
-function Blogposts({ initializeData }) {
+import { useApi } from "../../context/apiProviderContext";
+
+function Blogposts() {
   const [blogposts, setBlogposts] = useState([]);
+
+  const { initializeData } = useApi();
 
   useEffect(() => {
     initializeData("/blogs", setBlogposts);
