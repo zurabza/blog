@@ -4,14 +4,16 @@ import { useFetch } from "use-http";
 const ApiContext = createContext();
 
 export const ApiProvider = ({ children }) => {
-  const API_TOKEN = import.meta.env.VITE_TOKEN;
+  const token = import.meta.env.VITE_TOKEN;
   const request_url = import.meta.env.VITE_REQUEST_URL;
 
-  const { get, response } = useFetch(request_url, {
+  const options = {
     headers: {
-      Authorization: `Bearer ${API_TOKEN}`,
+      Authorization: `Bearer ${token}`,
     },
-  });
+  };
+
+  const { get, post, response } = useFetch(request_url, options);
 
   // GET fetch function (path - api path; setData - useState setter function)
   async function initializeData(path, setData) {
@@ -19,7 +21,13 @@ export const ApiProvider = ({ children }) => {
     if (response.ok) setData(initialData.data);
   }
 
-  return <ApiContext.Provider value={{ initializeData }}>{children}</ApiContext.Provider>;
+  // POST fetch function (path - api path; data - data to send)
+  async function postData(path, data) {
+    await post(path, data);
+    return response.ok;
+  }
+
+  return <ApiContext.Provider value={{ initializeData, postData }}>{children}</ApiContext.Provider>;
 };
 
 export const useApi = () => {

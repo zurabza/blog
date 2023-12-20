@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./Blogposts.module.css";
 import Arrow from "../../assets/Arrow.png";
 
-import { useApi } from "../../context/apiProviderContext";
+import { useApi } from "../../context/ApiProviderContext";
 
 function Blogposts() {
   const [blogposts, setBlogposts] = useState([]);

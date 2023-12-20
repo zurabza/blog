@@ -1,5 +1,5 @@
 .blackBack {
-  z-index: 999;
+  z-index: 99;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
@@ -19,6 +19,10 @@
   padding: 3rem 2rem;
   width: 27.5vw;
   position: relative;
+}
+
+.container .successForm {
+  display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
@@ -78,4 +82,31 @@
 .container h3 {
   margin-bottom: 2.25rem;
   font-size: 1.3rem;
+  text-align: center;
+}
+
+.error {
+  color: #ea1919;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-start;
+  align-items: center;
+  font-weight: 50;
+  margin-bottom: 1.25rem;
+  position: relative;
+  bottom: 0.75rem;
+}
+
+.error img {
+  width: 1.5rem;
+}
+
+.inputError {
+  background-color: #faf3f2 !important;
+  border: 1.5px solid #ea1919 !important;
+}
+
+.inputValidated {
+  background-color: #f8fef9 !important;
+  border: 1.5px solid #14d81c !important;
 }

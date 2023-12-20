@@ -5,14 +5,20 @@ import REDBERRY from "../../assets/REDBERRY.png";
 
 import Modal from "../Modal";
 
+import { useLogin } from "../../context/LoginContext";
+
 function Navbar() {
   const [openModal, setOpenModal] = useState(false);
+
+  const { isLoggedIn } = useLogin();
 
   return (
     <div className={styles.container}>
       <img src={REDBERRY} alt="Redberry logo" />
 
-      <button onClick={() => setOpenModal(!openModal)}>შესვლა</button>
+      {!isLoggedIn && <button onClick={() => setOpenModal(true)}>შესვლა</button>}
+
+      {isLoggedIn && <button>დაამატე ბლოგი</button>}
 
       {openModal && <Modal setOpenModal={setOpenModal} />}
     </div>

@@ -1,14 +1,17 @@
 import Navbar from "./components/Navbar";
 import Home from "./layout/home";
 
-import { ApiProvider } from "./context/apiProviderContext";
+import { LoginProvider } from "./context/LoginContext";
+import { ApiProvider } from "./context/ApiProviderContext";
 
 function App() {
   return (
-    <ApiProvider>
-      <Navbar />
-      <Home />
-    </ApiProvider>
+    <LoginProvider>
+      <ApiProvider>
+        <Navbar />
+        <Home />
+      </ApiProvider>
+    </LoginProvider>
   );
 }
 
