@@ -4,7 +4,8 @@
 }
 
 :root {
-  --background-color: #FBFBFE;
+  --background-color: #fbfbfe;
+  --transition: 0.2s;
 }
 
 body {
