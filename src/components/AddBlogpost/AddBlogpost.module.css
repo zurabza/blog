@@ -23,7 +23,7 @@
 }
 
 .inputsContainer h1 {
-  margin-bottom: 2.5rem;
+  margin-bottom: 2.75rem;
   font-size: 2.15rem;
 }
 
@@ -31,41 +31,13 @@
   font-weight: 200;
 }
 
-.inputsContainer .upload {
-  cursor: pointer;
-  margin-top: 0.5rem;
-  background-color: #f5f2ff;
-  padding: 4rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='12' ry='12' stroke='%23333' stroke-width='3' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
-  border-radius: 12px;
-  margin-bottom: 2rem;
-}
-
-.inputsContainer .upload img {
-  width: 3rem;
-  margin-bottom: 2rem;
-}
-
-.inputsContainer .upload p {
-  font-weight: 50;
-}
-
-.inputsContainer .upload p span {
-  font-weight: 600;
-  text-decoration: underline;
-}
-
 .inputsContainer label {
   display: block;
   margin-bottom: 0.5rem;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
 
   margin-top: 0.75rem;
+  z-index: 34;
 }
 
 .inputsContainer ul {
@@ -75,44 +47,8 @@
 .inputsContainer ul li {
   color: #85858d;
   font-weight: 50;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   margin: 0.45rem 0;
-}
-
-.input,
-.inputsContainer button {
-  padding: 0.75rem;
-  width: 100%;
-}
-
-.input,
-.textarea,
-.inputsContainer button {
-  transition: var(--transition);
-  border: 1.5px solid #e4e3eb;
-  outline: 1.5px solid #e4e3eb;
-  border-radius: 12px;
-}
-
-.inputsContainer button {
-  background-color: #e4e2ea;
-  color: white;
-  margin-top: 7.5rem;
-}
-
-.input:focus,
-.textarea:focus {
-  outline: 1.5px solid #5d37f3;
-  border: 1.5px solid #5d37f3;
-  background-color: #f7f6fe;
-}
-
-.textarea {
-  width: 100%;
-  height: 150px;
-  padding: 16px 18px;
-  box-sizing: border-box;
-  resize: none;
 }
 
 .inputWrapper {
@@ -127,10 +63,4 @@
 
 .inputWrapper div:nth-child(2) {
   width: 100%;
-}
-
-.removeBullet {
-  list-style-type: none;
-  position: relative;
-  right: 0.85rem;
 }

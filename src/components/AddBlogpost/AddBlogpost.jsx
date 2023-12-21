@@ -1,11 +1,21 @@
 import React from "react";
-
-import styles from "./AddBlogpost.module.css";
-import uploadImg from "../../assets/folder-add.png";
-import GoBackArrow from "../../assets/goback-arrow.png";
 import { Link } from "react-router-dom";
 
+import styles from "./AddBlogpost.module.css";
+import GoBackArrow from "../../assets/goback-arrow.png";
+
+import FileUpload from "./FileUpload/FileUpload";
+import AuthorAndTitle from "./AuthorAndTitle/AuthorAndTitle";
+import Description from "./Description";
+import Date from "./Date";
+import Category from "./Category";
+import Email from "./Email";
+
 function AddBlogpost() {
+  const submitBlogpost = () => {
+    console.log("Initialized submition process");
+  };
+
   return (
     <div className={styles.container}>
       <Link to="/">
@@ -15,56 +25,26 @@ function AddBlogpost() {
       <div className={styles.inputsContainer}>
         <h1>ბლოგის დამატება</h1>
 
-        <label>ატვირთეთ ფოტო</label>
-        <div className={styles.upload}>
-          <img src={uploadImg} alt="upload" />
-          <p>
-            ჩააგდეთ ფაილი აქ ან <span>აირჩიეთ ფაილი</span>
-          </p>
-        </div>
+        <FileUpload />
 
         <div className={styles.inputWrapper}>
-          <div>
-            <label>ავტორი *</label>
-            <input className={styles.input} placeholder="შეიყვანეთ ავტორი" />
-            <ul>
-              <li>მინიმუმ 4 სიმბოლო</li>
-              <li>მინიმუმ ორი სიტყვა</li>
-              <li>მხოლოდ ქართული სიმბოლოები</li>
-            </ul>
-          </div>
-          <div>
-            <label>სათაური *</label>
-            <input className={styles.input} placeholder="შეიყვანეთ სათაური" />
-            <ul className={styles.removeBullet}>
-              <li>მინიმუმ 2 სიმბოლო</li>
-            </ul>
-          </div>
+          <AuthorAndTitle />
         </div>
 
-        <label>აღწერა *</label>
-        <textarea className={styles.textarea} placeholder="შეიყვანეთ აღწერა" />
-        <ul className={styles.removeBullet}>
-          <li>მინიმუმ 2 სიმბოლო</li>
-        </ul>
+        <Description />
 
         <div className={`${styles.inputWrapper} marginbtm-075`}>
-          <div>
-            <label>გამოქვეყნების თარიღი *</label>
-            <input className={styles.input} />
-          </div>
-          <div>
-            <label>კატეგორია *</label>
-            <input className={styles.input} placeholder="აირჩიეთ კატეგორია" />
-          </div>
+          <Date />
+          <Category />
         </div>
+
         <div className={styles.inputWrapper}>
+          <Email />
+
           <div>
-            <label>ელ-ფოსტა</label>
-            <input className={styles.input} placeholder="Example@redberry.ge" />
-          </div>
-          <div>
-            <button>გამოქვეყნება</button>
+            <button onClick={() => submitBlogpost()} className="submit-btn">
+              გამოქვეყნება
+            </button>
           </div>
         </div>
       </div>

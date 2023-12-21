@@ -1,0 +1,28 @@
+.upload {
+  cursor: pointer;
+  margin-top: 0.5rem;
+  background-color: #f5f2ff;
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='12' ry='12' stroke='%23333' stroke-width='3' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+.upload img {
+  width: 3rem;
+  margin-bottom: 2rem;
+}
+
+.upload p {
+  font-weight: 50;
+}
+
+.upload p span {
+  font-weight: 600;
+  text-decoration: underline;
+}

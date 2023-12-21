@@ -1,0 +1,21 @@
+.dateInput {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 3.65rem !important;
+  background: white url(../../../assets/calendar.png) no-repeat scroll;
+  background-position: 1.1rem;
+  background-size: 2rem;
+  object-fit: cover;
+  position: relative;
+}
+
+.dateInput[type="date"]::-webkit-inner-spin-button,
+.dateInput[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0.00000000000001;
+  position: absolute;
+  left: 1.2rem;
+  top: 0.45rem;
+  width: 1.6rem;
+  height: 3.5rem;
+}
