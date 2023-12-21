@@ -4,8 +4,15 @@
 }
 
 .inputsContainer {
-  width: 37.5vw;
+  width: 50vw;
   margin: 0 auto;
+  transition: var(--transition);
+}
+
+@media only screen and (min-width: 1601px) {
+  .inputsContainer {
+    width: 40vw;
+  }
 }
 
 .goBackArrow {
@@ -17,7 +24,7 @@
 
 .inputsContainer h1 {
   margin-bottom: 2.5rem;
-  font-size: 2.2rem;
+  font-size: 2.15rem;
 }
 
 .inputsContainer h5 {

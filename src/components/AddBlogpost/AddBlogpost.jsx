@@ -3,11 +3,14 @@ import React from "react";
 import styles from "./AddBlogpost.module.css";
 import uploadImg from "../../assets/folder-add.png";
 import GoBackArrow from "../../assets/goback-arrow.png";
+import { Link } from "react-router-dom";
 
 function AddBlogpost() {
   return (
     <div className={styles.container}>
-      <img className={styles.goBackArrow} src={GoBackArrow} alt="go back" />
+      <Link to="/">
+        <img className={styles.goBackArrow} src={GoBackArrow} alt="go back" />
+      </Link>
 
       <div className={styles.inputsContainer}>
         <h1>ბლოგის დამატება</h1>

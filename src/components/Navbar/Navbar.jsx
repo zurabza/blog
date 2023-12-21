@@ -1,24 +1,34 @@
 import React, { useState } from "react";
+import Modal from "../Modal";
 
 import styles from "./Navbar.module.css";
 import REDBERRY from "../../assets/REDBERRY.png";
 
-import Modal from "../Modal";
-
 import { useLogin } from "../../context/LoginContext";
+
+import { Link, useLocation } from "react-router-dom";
 
 function Navbar() {
   const [openModal, setOpenModal] = useState(false);
 
   const { isLoggedIn } = useLogin();
 
+  const location = useLocation();
+  const atHomeRoute = location.pathname == "/";
+
   return (
-    <div className={styles.container}>
-      <img src={REDBERRY} alt="Redberry logo" />
+    <div style={atHomeRoute ? {} : { justifyContent: "center" }} className={styles.container}>
+      <Link to="/">
+        <img src={REDBERRY} alt="Redberry logo" />
+      </Link>
 
-      {!isLoggedIn && <button onClick={() => setOpenModal(true)}>შესვლა</button>}
+      {atHomeRoute && !isLoggedIn && <button onClick={() => setOpenModal(true)}>შესვლა</button>}
 
-      {isLoggedIn && <button>დაამატე ბლოგი</button>}
+      {atHomeRoute && isLoggedIn && (
+        <Link to="/add">
+          <button>დაამატე ბლოგი</button>
+        </Link>
+      )}
 
       {openModal && <Modal setOpenModal={setOpenModal} />}
     </div>
