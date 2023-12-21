@@ -55,6 +55,7 @@ function Modal({ setOpenModal }) {
 
             <label>ელ-ფოსტა</label>
             <input
+              placeholder="Example@redberry.ge"
               className={error ? styles.inputError : validated ? styles.inputValidated : ""}
               type="text"
               value={email}

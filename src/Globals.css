@@ -30,3 +30,7 @@ body {
   cursor: pointer;
   white-space: nowrap;
 }
+
+.marginbtm-075 {
+  margin-bottom: 0.75rem;
+}
