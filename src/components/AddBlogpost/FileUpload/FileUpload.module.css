@@ -1,5 +1,4 @@
-.upload {
-  cursor: pointer;
+.container .upload {
   margin-top: 0.5rem;
   background-color: #f5f2ff;
   padding: 4rem;
@@ -11,18 +10,47 @@
   background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='12' ry='12' stroke='%23333' stroke-width='3' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
   border-radius: 12px;
   margin-bottom: 2rem;
+  cursor: default;
 }
 
-.upload img {
+.container .upload img {
   width: 3rem;
   margin-bottom: 2rem;
 }
 
-.upload p {
+.container .upload p {
   font-weight: 50;
 }
 
-.upload p span {
+.container .upload p span {
   font-weight: 600;
   text-decoration: underline;
+  cursor: pointer;
+}
+
+.uploaded .upload {
+  padding: 1.25rem;
+  background-color: #f2f2fa;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 12px;
+  margin-bottom: 0.75rem;
+}
+
+.uploaded .upload img {
+  width: 1.75rem;
+  cursor: pointer;
+}
+
+.uploaded .upload .picAndName {
+  display: flex;
+  align-items: center;
+}
+
+.uploaded .upload .picAndName img {
+  width: 2rem;
+  margin: 0 1rem;
+  margin-left: 0.25rem;
+  cursor: pointer;
 }
