@@ -30,7 +30,7 @@ function Navbar() {
         </Link>
       )}
 
-      {openModal && <Modal setOpenModal={setOpenModal} />}
+      {openModal && <Modal setOpenModal={setOpenModal} initialSuccess={false} content={{ title: "წარმატებული ავტორიზაცია", subtitle: "კარგი" }} />}
     </div>
   );
 }

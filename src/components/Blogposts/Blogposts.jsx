@@ -10,8 +10,12 @@ function Blogposts() {
 
   const { initializeData } = useApi();
 
+  const fetchData = async () => {
+    await initializeData("/blogs", setBlogposts);
+  };
+
   useEffect(() => {
-    initializeData("/blogs", setBlogposts);
+    fetchData();
   }, []);
 
   return (
@@ -25,11 +29,13 @@ function Blogposts() {
           <h2 className={styles.title}>{blog.title}</h2>
 
           <div className={styles.filters}>
-            {blog.categories?.map((filter) => (
-              <button key={filter.id} className="category-btn" style={{ color: filter.text_color, backgroundColor: filter.background_color }}>
-                {filter.name}
-              </button>
-            ))}
+            {blog.categories?.map((category) => {
+              return (
+                <button key={category.id} className="category-btn" style={{ color: category.text_color, backgroundColor: category.background_color }}>
+                  {category.title}
+                </button>
+              );
+            })}
           </div>
 
           <h3 className={styles.description}>{blog.description}</h3>

@@ -6,6 +6,7 @@
 :root {
   --background-color: #fbfbfe;
   --transition: 0.2s;
+  --active-color: #4720dc;
 }
 
 ul li {
@@ -65,6 +66,11 @@ body {
   color: white;
   margin-top: 10rem;
   font-size: 1rem;
+}
+
+.active-btn {
+  background-color: var(--active-color);
+  cursor: pointer;
 }
 
 .input:focus,

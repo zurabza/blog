@@ -7,12 +7,13 @@ import ERROR from "../../assets/error-circle.png";
 
 import { useApi } from "../../context/ApiProviderContext";
 import { useLogin } from "../../context/LoginContext";
+import { Link } from "react-router-dom";
 
-function Modal({ setOpenModal }) {
+function Modal({ setOpenModal, initialSuccess, content }) {
   const [email, setEmail] = useState(""); // User Input
   const [error, setError] = useState(""); // Regex validation error
   const [validated, setValidated] = useState(false); // Regex validation accepted
-  const [success, setSuccess] = useState(false); // Login success
+  const [success, setSuccess] = useState(initialSuccess); // Login success
 
   const { login } = useLogin(); // sign in function
   const { postData } = useApi();
@@ -76,9 +77,17 @@ function Modal({ setOpenModal }) {
         {success && (
           <form onSubmit={() => setOpenModal(false)} className={styles.successForm}>
             <img className={styles.accepted} src={ACCEPTED} alt="accepted" />
-            <h3>წარმატებული ავტორიზაცია</h3>
+            <h3>{content.title}</h3>
 
-            <button type="submit">კარგი</button>
+            {content.subtitleHref ? (
+              <Link to={content.subtitleHref}>
+                <button className={styles.btn} type="submit">
+                  {content.subtitle}
+                </button>
+              </Link>
+            ) : (
+              <button type="submit">{content.subtitle}</button>
+            )}
           </form>
         )}
 

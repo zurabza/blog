@@ -3,7 +3,7 @@ import { createContext, useState, useContext } from "react";
 const BlogpostContext = createContext();
 
 export const BlogpostProvider = ({ children }) => {
-  const [data, setData] = useState({
+  const initialData = {
     title: "",
     description: "",
     image: null,
@@ -11,13 +11,19 @@ export const BlogpostProvider = ({ children }) => {
     publish_date: "",
     categories: [],
     email: "",
-  });
+  };
+
+  const [data, setData] = useState(initialData);
 
   const updateData = (newData) => {
     setData((prevData) => ({ ...prevData, ...newData }));
   };
 
-  return <BlogpostContext.Provider value={{ data, updateData }}>{children}</BlogpostContext.Provider>;
+  const resetData = () => {
+    setData(initialData);
+  };
+
+  return <BlogpostContext.Provider value={{ data, updateData, resetData }}>{children}</BlogpostContext.Provider>;
 };
 
 export const useBlogpost = () => {

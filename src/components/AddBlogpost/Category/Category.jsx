@@ -25,10 +25,10 @@ function Category() {
     !dropdownOpen && document.getElementById("dropdownInput").blur();
 
     document.addEventListener("click", function (event) {
-      var inputDiv = document.getElementById("inputDiv");
+      const inputDiv = document.getElementById("inputDiv");
 
-      // If clicked outside dropdown, close dropdown
-      if (!inputDiv.contains(event.target)) {
+      // If clicked outside dropdown, close dropdown 
+      if (inputDiv && !inputDiv.contains(event.target)) {
         setDropdownOpen(false);
       }
     });
