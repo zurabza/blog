@@ -7,7 +7,7 @@ import closeIcon from "../../../assets/close.png";
 import { useBlogpost } from "../../../context/BlogpostContext";
 
 function FileUpload() {
-  const { data, updateData } = useBlogpost();
+  const { updateData } = useBlogpost();
 
   const [selectedFile, setSelectedFile] = useState(null);
   const fileInputRef = useRef(null);

@@ -5,6 +5,7 @@ import DownArrow from "../../../assets/arrow-down.png";
 import DELETE from "../../../assets/close-white.png";
 
 import { useApi } from "../../../context/ApiProviderContext";
+import { useBlogpost } from "../../../context/BlogpostContext";
 
 function Category() {
   const [categories, setCategories] = useState([]);
@@ -13,6 +14,7 @@ function Category() {
   const [addedCategories, setAddedCategories] = useState([]);
 
   const { initializeData } = useApi();
+  const { updateData } = useBlogpost();
 
   useEffect(() => {
     initializeData("/categories", setCategories);
@@ -51,23 +53,30 @@ function Category() {
     setAddedCategories(updatedCategories);
   };
 
+  useEffect(() => {
+    const categoriesIds = addedCategories.map((category) => category.id);
+    updateData({ categories: categoriesIds });
+  }, [addedCategories]);
+
+  const inputClassname = addedCategories.length > 0 ? "bluefocus input input-validated" : "input";
+
   return (
     <div className={styles.container}>
       <label>კატეგორია *</label>
       <div id="inputDiv" className={styles.dropdown}>
         <input
+          readOnly
           onClick={() => setDropdownOpen(!dropdownOpen)}
           id="dropdownInput"
-          readOnly
-          className="input"
+          className={inputClassname}
           placeholder={addedCategories.length > 0 ? "" : "აირჩიეთ კატეგორია"}
         />
         <img className={styles.DownArrow} src={DownArrow} alt="open/close" />
 
         {addedCategories.length > 0 && (
           <div className={styles.added}>
-            {addedCategories.map((category) => (
-              <button key={category.id} className="category-btn" style={{ color: category.text_color, backgroundColor: category.background_color }}>
+            {addedCategories.map((category, id) => (
+              <button key={id} className="category-btn" style={{ color: category.text_color, backgroundColor: category.background_color }}>
                 {category.title}
                 <img onClick={() => handleCategoryDelete(category)} src={DELETE} alt="delete" />
               </button>
@@ -78,9 +87,9 @@ function Category() {
 
       {dropdownOpen && (
         <div className={styles.dropdownCategories}>
-          {categories.map((category) => (
+          {categories.map((category, id) => (
             <button
-              key={category.id}
+              key={id}
               className="category-btn"
               onClick={() => handleCategoryClick(category)}
               style={{ color: category.text_color, backgroundColor: category.background_color }}

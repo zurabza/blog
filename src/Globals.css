@@ -8,6 +8,10 @@
   --transition: 0.2s;
 }
 
+ul li {
+  transition: var(--transition);
+}
+
 body {
   background-color: var(--background-color);
 }
@@ -37,7 +41,7 @@ body {
 
 .input,
 .submit-btn {
-  padding: 1.15rem 1.25rem;
+  padding: 1.1rem 1.25rem;
   width: 100%;
 }
 
@@ -59,7 +63,8 @@ body {
 .submit-btn {
   background-color: #e4e2ea;
   color: white;
-  margin-top: 7.5rem;
+  margin-top: 10rem;
+  font-size: 1rem;
 }
 
 .input:focus,
@@ -77,8 +82,28 @@ body {
   resize: none;
 }
 
-.removeullet {
+.remove-bullet {
   list-style-type: none;
   position: relative;
   right: 0.85rem;
+}
+
+.input-error,
+.input-error:focus {
+  background-color: #faf3f2 !important;
+  border: 1.5px solid #ea1919 !important;
+  outline: 1.5px solid #ea1919 !important;
+}
+
+.input-validated,
+.input-validated:focus {
+  background-color: #f8fef9 !important;
+  border: 1.5px solid #14d81c !important;
+  outline: 1.5px solid #14d81c !important;
+}
+
+.bluefocus:focus {
+  outline: 1.5px solid #5d37f3 !important;
+  border: 1.5px solid #5d37f3 !important;
+  background-color: #f7f6fe !important;
 }

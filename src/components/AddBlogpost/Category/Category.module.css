@@ -35,6 +35,7 @@
   box-shadow: 0 0 1px 1px #dedede;
   background-color: white;
   z-index: 21;
+  margin-top: 0.25rem;
 }
 
 .dropdownCategories button {
@@ -48,10 +49,12 @@
   display: flex;
   overflow: auto;
   z-index: 200;
+  margin-top: 0.25rem;
+  padding-bottom: 0.25rem;
 }
 
 .added::-webkit-scrollbar {
-  height: 5px;
+  height: 6px;
 }
 
 .added::-webkit-scrollbar-track {
@@ -61,6 +64,7 @@
 .added::-webkit-scrollbar-thumb {
   border-radius: 5px;
   background: #909090;
+  
 }
 
 .added::-webkit-scrollbar-thumb:hover {

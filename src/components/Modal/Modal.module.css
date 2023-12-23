@@ -98,15 +98,5 @@
 }
 
 .error img {
-  width: 1.5rem;
-}
-
-.inputError {
-  background-color: #faf3f2 !important;
-  border: 1.5px solid #ea1919 !important;
-}
-
-.inputValidated {
-  background-color: #f8fef9 !important;
-  border: 1.5px solid #14d81c !important;
+  width: 1.5rem !important;
 }

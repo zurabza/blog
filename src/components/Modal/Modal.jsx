@@ -17,7 +17,7 @@ function Modal({ setOpenModal }) {
   const { login } = useLogin(); // sign in function
   const { postData } = useApi();
 
-  const redberryRegex = /^[^@]+@redberry\.ge$/;
+  const redberryRegex = /^\s*[^@\s]+@redberry\.ge\s*$/;
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -56,7 +56,7 @@ function Modal({ setOpenModal }) {
             <label>ელ-ფოსტა</label>
             <input
               placeholder="Example@redberry.ge"
-              className={error ? styles.inputError : validated ? styles.inputValidated : ""}
+              className={error ? "input-error" : validated ? "input-validated" : ""}
               type="text"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
