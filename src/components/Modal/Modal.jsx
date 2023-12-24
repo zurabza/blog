@@ -57,7 +57,7 @@ function Modal({ setOpenModal, initialSuccess, content }) {
             <label>ელ-ფოსტა</label>
             <input
               placeholder="Example@redberry.ge"
-              className={error ? "input-error" : validated ? "input-validated" : ""}
+              className={error ? "input input-error" : validated ? "input input-validated" : "input"}
               type="text"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
