@@ -29,12 +29,15 @@ function Description() {
 
   const className = error ? "textarea input-error" : description && !error ? "textarea input-validated" : "textarea";
 
+  const titleSuccessColor = description ? "#14d81c" : "";
+  const errorColor = "#eb1819";
+
   return (
     <>
       <label>აღწერა *</label>
       <textarea className={className} placeholder="შეიყვანეთ აღწერა" value={description} onChange={(e) => setDescription(e.target.value)} />
       <ul className="remove-bullet">
-        <li>მინიმუმ 2 სიმბოლო</li>
+        <li style={error ? { color: errorColor } : { color: titleSuccessColor }}>მინიმუმ 2 სიმბოლო</li>
       </ul>
     </>
   );
