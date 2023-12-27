@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 // REGEX
-const min2Symbol = /^.{2,}$/;
+const min2Symbol = /.{1,}((?:\s*\n)?\S)+/;
 
 import { useBlogpost } from "../../../context/BlogpostContext";
 
