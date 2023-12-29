@@ -1,56 +1,35 @@
-import React, { useEffect, useState, useRef } from "react";
+import React from "react";
 import styles from "./Blogpost.module.css";
 
-import { useParams } from "react-router-dom";
-import { useApi } from "../../context/ApiProviderContext";
+import Arrow from "../../assets/Arrow.png";
+import { Link } from "react-router-dom";
 
-function Blogpost() {
-  const [blogpost, setBlogpost] = useState(null);
+function Blogpost({ blog }) {
+  return (
+    <div className={styles.blogpost}>
+      <img src={blog.image} alt="blogpost-cover" />
+      <h4 className={styles.author}>{blog.author}</h4>
+      <h6 className={styles.date}>{blog.publish_date}</h6>
 
-  const { id } = useParams();
-  const { initializeData } = useApi();
+      <h2 className={styles.title}>{blog.title}</h2>
 
-  const fetchData = async () => {
-    await initializeData(`/blogs/${id}`, setBlogpost);
-  };
+      <div className={styles.filters}>
+        {blog.categories?.map((category) => {
+          return (
+            <button key={category.id} className="category-btn" style={{ color: category.text_color, backgroundColor: category.background_color }}>
+              {category.title}
+            </button>
+          );
+        })}
+      </div>
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+      <h3 className={styles.description}>{blog.description}</h3>
 
-  if (blogpost) {
-    const { id: blogId, title, author, categories, description, email, image, publish_date } = blogpost;
-
-    return (
-      <>
-        {/* <img src="" alt="go back" /> */}
-
-        <div className={styles.container}>
-          <img src={image} alt="blog cover" />
-
-          <div className={styles.metadata}>
-            <h4>{author}</h4>
-            <h6>
-              {publish_date}
-              {email && ` • ${email}`}
-            </h6>
-          </div>
-
-          <h1 className={styles.title}>{title}</h1>
-
-          <div className={styles.categories}>
-            {categories?.map((category) => (
-              <button key={category.id} className="category-btn" style={{ color: category.text_color, backgroundColor: category.background_color }}>
-                {category.title}
-              </button>
-            ))}
-          </div>
-
-          <p className={styles.description}>{description}</p>
-        </div>
-      </>
-    );
-  }
+      <Link to={`/${blog.id}`}>
+        სრულად ნახვა <img src={Arrow} alt="arrow" />
+      </Link>
+    </div>
+  );
 }
 
 export default Blogpost;
