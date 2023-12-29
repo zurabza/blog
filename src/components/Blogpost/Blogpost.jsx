@@ -32,7 +32,7 @@ function Blogpost() {
             <h4>{author}</h4>
             <h6>
               {publish_date}
-              {email && `• ${email}`}
+              {email && ` • ${email}`}
             </h6>
           </div>
 
