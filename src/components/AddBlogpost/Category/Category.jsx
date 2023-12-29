@@ -4,7 +4,7 @@ import styles from "./Category.module.css";
 import DownArrow from "../../../assets/arrow-down.png";
 import DELETE from "../../../assets/close-white.png";
 
-import { useApi } from "../../../context/ApiProviderContext";
+import { useApi } from "../../../context/apiProviderContext";
 import { useBlogpost } from "../../../context/BlogpostContext";
 
 function Category() {

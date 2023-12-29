@@ -5,7 +5,7 @@ import CLOSE from "../../assets/close.png";
 import ACCEPTED from "../../assets/tick-circle.png";
 import ERROR from "../../assets/error-circle.png";
 
-import { useApi } from "../../context/ApiProviderContext";
+import { useApi } from "../../context/apiProviderContext";
 import { useLogin } from "../../context/LoginContext";
 import { Link } from "react-router-dom";
 

@@ -13,7 +13,7 @@ import Email from "./Email";
 import Modal from "../Modal";
 
 import { useBlogpost } from "../../context/BlogpostContext";
-import { useApi } from "../../context/ApiProviderContext";
+import { useApi } from "../../context/apiProviderContext";
 
 function validateObject(obj, keyToExcludeFromValidation) {
   for (const key in obj) {

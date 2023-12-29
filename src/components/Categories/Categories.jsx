@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Categories.module.css";
 
-import { useApi } from "../../context/ApiProviderContext";
+import { useApi } from "../../context/apiProviderContext";
 import { useCategoryContext } from "../../context/categoriesFilterContext";
 
 function Categories() {

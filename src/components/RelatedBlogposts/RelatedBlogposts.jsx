@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./RelatedBlogposts.module.css";
 
-import { useApi } from "../../context/ApiProviderContext";
+import { useApi } from "../../context/apiProviderContext";
 
 import Blogpost from "../Blogpost";
 

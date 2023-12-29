@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./BlogpostPage.module.css";
 
 import { useParams } from "react-router-dom";
-import { useApi } from "../../context/ApiProviderContext";
+import { useApi } from "../../context/apiProviderContext";
 
 import RelatedBlogposts from "../RelatedBlogposts";
 
