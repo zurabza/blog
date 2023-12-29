@@ -14,23 +14,29 @@ function Navbar() {
   const { isLoggedIn } = useLogin();
 
   const location = useLocation();
-  const atHomeRoute = location.pathname == "/";
+  const notOnAddRoute = location.pathname != "/add";
 
   return (
-    <div style={atHomeRoute ? {} : { justifyContent: "center" }} className={styles.container}>
+    <div style={notOnAddRoute ? {} : { justifyContent: "center" }} className={styles.container}>
       <Link to="/">
         <img src={REDBERRY} alt="Redberry logo" />
       </Link>
 
-      {atHomeRoute && !isLoggedIn && <button onClick={() => setOpenModal(true)}>შესვლა</button>}
+      {notOnAddRoute && !isLoggedIn && <button onClick={() => setOpenModal(true)}>შესვლა</button>}
 
-      {atHomeRoute && isLoggedIn && (
+      {notOnAddRoute && isLoggedIn && (
         <Link to="/add">
           <button>დაამატე ბლოგი</button>
         </Link>
       )}
 
-      {openModal && <Modal setOpenModal={setOpenModal} initialSuccess={false} content={{ title: "წარმატებული ავტორიზაცია", subtitle: "კარგი" }} />}
+      {openModal && (
+        <Modal
+          setOpenModal={setOpenModal}
+          initialSuccess={false}
+          content={{ title: "წარმატებული ავტორიზაცია", subtitle: "კარგი", subtitleHref: "/" }}
+        />
+      )}
     </div>
   );
 }

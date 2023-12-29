@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from "react";
+import React, { createContext, useContext, useEffect } from "react";
 import { useFetch } from "use-http";
 
 const ApiContext = createContext();
@@ -17,13 +17,13 @@ export const ApiProvider = ({ children }) => {
 
   // GET fetch function (path - api path; setData - useState setter function)
   async function initializeData(path, setData) {
-    const initialData = await get(path);
-    if (response.ok) setData(initialData.data);
+    const data = await get(path);
+    if (response.ok) setData(data.data || data);
   }
 
   // POST fetch function (path - api path; data - data to send)
   async function postData(path, data) {
-    await post(path, data);
+    const sendData = await post(path, data);
     return response.ok;
   }
 

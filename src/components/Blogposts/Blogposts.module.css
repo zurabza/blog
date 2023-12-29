@@ -1,14 +1,17 @@
 .blogposts {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-column-gap: 3rem;
-  grid-row-gap: 4rem;
+  grid-column-gap: -2rem;
+  grid-row-gap: 5rem;
   margin: 0 var(--page-margin);
 
   padding-bottom: 6rem;
 }
 
 .blogpost {
+  max-width: 25vw;
+  word-wrap: break-word;
+  position: relative;
 }
 
 .blogpost img {
@@ -23,6 +26,11 @@
   font-size: 1.3rem;
   font-weight: 500;
   opacity: 0.96;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
 .blogpost .date {
@@ -38,14 +46,43 @@
   font-weight: 600;
   opacity: 0.92;
   color: #1a1a1f;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  height: 7.5vh;
 }
 
 .blogpost .filters {
   padding: 0;
-  width: fit-content;
+  width: 100%;
+  display: flex;
+  overflow: auto;
 
   margin: 1.5rem;
   margin-left: 0;
+  padding-bottom: 0.25rem;
+}
+
+.blogpost .filters button {
+  margin: 0.4rem 0.8rem;
+  margin-left: 0;
+}
+
+.filters::-webkit-scrollbar {
+  height: 5px;
+}
+
+.filters::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+.filters::-webkit-scrollbar-thumb {
+  background: rgb(47, 47, 47);
+  padding-bottom: 10rem;
+  border-radius: 10px;
 }
 
 .blogpost .description {

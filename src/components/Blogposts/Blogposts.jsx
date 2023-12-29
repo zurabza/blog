@@ -4,10 +4,10 @@ import styles from "./Blogposts.module.css";
 import Arrow from "../../assets/Arrow.png";
 
 import { useApi } from "../../context/ApiProviderContext";
+import { Link } from "react-router-dom";
 
 function Blogposts() {
   const [blogposts, setBlogposts] = useState([]);
-
   const { initializeData } = useApi();
 
   const fetchData = async () => {
@@ -38,11 +38,13 @@ function Blogposts() {
             })}
           </div>
 
-          <h3 className={styles.description}>{blog.description}</h3>
+          <h3 className={styles.description}>
+            {blog.description}
+          </h3>
 
-          <a>
+          <Link to={`/${blog.id}`}>
             სრულად ნახვა <img src={Arrow} alt="arrow" />
-          </a>
+          </Link>
         </div>
       ))}
     </div>

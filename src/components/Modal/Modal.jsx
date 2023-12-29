@@ -81,7 +81,7 @@ function Modal({ setOpenModal, initialSuccess, content }) {
 
             {content.subtitleHref ? (
               <Link to={content.subtitleHref}>
-                <button className={styles.btn} type="submit">
+                <button onClick={() => setOpenModal(false)} type="submit" className={styles.btn}>
                   {content.subtitle}
                 </button>
               </Link>
