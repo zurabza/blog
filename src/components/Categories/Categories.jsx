@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import styles from "./Categories.module.css";
 
 import { useApi } from "../../context/ApiProviderContext";
+import { useCategoryContext } from "../../context/categoriesFilterContext";
 
 function Categories() {
   const [categories, setCategories] = useState([]);
 
+  const { categories: filteredCategories, updateCategories } = useCategoryContext();
   const { initializeData } = useApi();
 
   useEffect(() => {
@@ -14,10 +16,27 @@ function Categories() {
 
   const categoriesNotLoaded = categories.length == 0;
 
+  const filterBlogposts = (newCategory) => {
+    const isCategorySelected = filteredCategories.includes(newCategory);
+
+    if (isCategorySelected) {
+      const updatedCategories = filteredCategories.filter((category) => category !== newCategory);
+      updateCategories(updatedCategories);
+    } else {
+      const updatedCategories = [...filteredCategories, newCategory];
+      updateCategories(updatedCategories);
+    }
+  };
+
   return (
     <div className={styles.container}>
       {categories?.map((category) => (
-        <button key={category.id} className="category-btn" style={{ color: category.text_color, backgroundColor: category.background_color }}>
+        <button
+          key={category.id}
+          onClick={() => filterBlogposts(category)}
+          className={`category-btn ${filteredCategories.includes(category) && styles.selected}`}
+          style={{ color: category.text_color, backgroundColor: category.background_color, border: `2px solid ${category.background_color}` }}
+        >
           {category.title}
         </button>
       ))}

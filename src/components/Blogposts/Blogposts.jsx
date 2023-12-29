@@ -5,10 +5,15 @@ import Arrow from "../../assets/Arrow.png";
 
 import { useApi } from "../../context/ApiProviderContext";
 import { Link } from "react-router-dom";
+import { useCategoryContext } from "../../context/categoriesFilterContext";
 
 function Blogposts() {
   const [blogposts, setBlogposts] = useState([]);
+  const [filteredBlogposts, setFilteredBlogposts] = useState([]);
+
   const { initializeData } = useApi();
+
+  const { categories: filteredCategories } = useCategoryContext();
 
   const fetchData = async () => {
     await initializeData("/blogs", setBlogposts);
@@ -18,9 +23,19 @@ function Blogposts() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const filteredBlogposts = blogposts.filter((obj) =>
+      obj.categories.some((category) => filteredCategories.some((secondCategory) => secondCategory.id === category.id))
+    );
+
+    const finalBlogpostsArr = filteredCategories.length > 0 ? filteredBlogposts : blogposts;
+
+    setFilteredBlogposts(finalBlogpostsArr);
+  }, [blogposts, filteredCategories]);
+
   return (
     <div className={styles.blogposts}>
-      {blogposts?.map((blog) => (
+      {filteredBlogposts?.map((blog) => (
         <div key={blog.id} className={styles.blogpost}>
           <img src={blog.image} alt="blogpost-cover" />
           <h4 className={styles.author}>{blog.author}</h4>
@@ -38,9 +53,7 @@ function Blogposts() {
             })}
           </div>
 
-          <h3 className={styles.description}>
-            {blog.description}
-          </h3>
+          <h3 className={styles.description}>{blog.description}</h3>
 
           <Link to={`/${blog.id}`}>
             სრულად ნახვა <img src={Arrow} alt="arrow" />
