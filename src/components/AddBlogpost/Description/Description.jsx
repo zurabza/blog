@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { useBlogpost } from "../../../context/BlogpostContext";
 
 // REGEX
 const min2Symbol = /.{1,}((?:\s*\n)?\S)+/;
 
-import { useBlogpost } from "../../../context/BlogpostContext";
-
 function Description() {
   const { updateData } = useBlogpost();
 
-  const [description, setDescription] = useState(""); // User input
+  const storedDescription = localStorage.getItem("blogpostDescription") || "";
+  const [description, setDescription] = useState(storedDescription);
   const [error, setError] = useState(false);
 
   useEffect(() => {
@@ -25,6 +25,9 @@ function Description() {
     } else {
       updateData({ description: "" });
     }
+
+    // Save to local storage
+    localStorage.setItem("blogpostDescription", description);
   }, [description]);
 
   const className = error ? "textarea input-error" : description && !error ? "textarea input-validated" : "textarea";
@@ -35,7 +38,12 @@ function Description() {
   return (
     <>
       <label>აღწერა *</label>
-      <textarea className={className} placeholder="შეიყვანეთ აღწერა" value={description} onChange={(e) => setDescription(e.target.value)} />
+      <textarea
+        className={className}
+        placeholder="შეიყვანეთ აღწერა"
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+      />
       <ul className="remove-bullet">
         <li style={error ? { color: errorColor } : { color: titleSuccessColor }}>მინიმუმ 2 სიმბოლო</li>
       </ul>

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-
 import { useBlogpost } from "../../../context/BlogpostContext";
 
 // REGEX
@@ -9,15 +8,18 @@ const atLeast2Words = /^\S+(\s+\S+)+$/;
 const georgianSymbols = /^[ქწერტყუიოპასდფგჰჯკლზხცვბნმჭღთშჟ₾ძჩN, ]+$/;
 
 function AuthorAndTitle() {
-  const { updateData } = useBlogpost();
+  const { data, updateData } = useBlogpost();
+  const { title: contextTitle, author: contextAuthor } = data;
 
-  const [author, setAuthor] = useState(""); // User input
+  const storedAuthor = localStorage.getItem("blogpostAuthor") || "";
+  const storedTitle = localStorage.getItem("blogpostTitle") || "";
 
+  const [author, setAuthor] = useState(storedAuthor);
   const [symbolError, setSymbolError] = useState(false);
   const [wordsError, setWordsError] = useState(false);
   const [georgianSymbolsError, setGeorgianSymbolsError] = useState(false);
 
-  const [title, setTitle] = useState(""); // User input
+  const [title, setTitle] = useState(storedTitle);
   const [titleError, setTitleError] = useState(false);
 
   useEffect(() => {
@@ -53,6 +55,9 @@ function AuthorAndTitle() {
     } else {
       updateData({ author: "" });
     }
+
+    // Save to local storage
+    localStorage.setItem("blogpostAuthor", author);
   }, [author]);
 
   useEffect(() => {
@@ -69,6 +74,9 @@ function AuthorAndTitle() {
     } else {
       updateData({ title: "" });
     }
+
+    // Save to local storage
+    localStorage.setItem("blogpostTitle", title);
   }, [title]);
 
   const authorInputError = symbolError || wordsError || georgianSymbolsError;

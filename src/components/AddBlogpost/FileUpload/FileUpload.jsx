@@ -7,9 +7,10 @@ import closeIcon from "../../../assets/close.png";
 import { useBlogpost } from "../../../context/BlogpostContext";
 
 function FileUpload() {
-  const { updateData } = useBlogpost();
+  const { data, updateData } = useBlogpost();
 
-  const [selectedFile, setSelectedFile] = useState(null);
+  const storedSelectedFile = JSON.parse(localStorage.getItem("blogpostSelectedFile")) || null;
+  const [selectedFile, setSelectedFile] = useState(storedSelectedFile);
   const fileInputRef = useRef(null);
 
   const handleFileChange = (event) => {
@@ -35,6 +36,9 @@ function FileUpload() {
 
   useEffect(() => {
     updateData({ image: selectedFile });
+
+    // Save selectedFile to local storage
+    localStorage.setItem("blogpostSelectedFile", JSON.stringify(selectedFile));
   }, [selectedFile]);
 
   const handleFileDelete = () => {

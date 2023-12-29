@@ -5,9 +5,9 @@ import "./Globals.css";
 
 import { BrowserRouter } from "react-router-dom";
 
-import { LoginProvider } from "./context/LoginContext";
+import { LoginProvider } from "./context/LoginContext.jsx";
 import { CategoryProvider } from "./context/categoriesFilterContext.jsx";
-import { ApiProvider } from "./context/ApiProviderContext";
+import { ApiProvider } from "./context/ApiProviderContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

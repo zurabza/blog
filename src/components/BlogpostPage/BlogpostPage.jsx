@@ -50,6 +50,8 @@ function BlogpostPage() {
 
           <p className={styles.description}>{description}</p>
         </div>
+
+        <RelatedBlogposts blogpost={blogpost} />
       </>
     );
   }

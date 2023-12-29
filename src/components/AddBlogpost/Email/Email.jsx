@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-
 import styles from "./Email.module.css";
 import ERROR from "../../../assets/error-circle.png";
 
@@ -11,7 +10,8 @@ import { useBlogpost } from "../../../context/BlogpostContext";
 function Email() {
   const { updateData } = useBlogpost();
 
-  const [email, setEmail] = useState(""); // User input
+  const storedEmail = localStorage.getItem("blogpostEmail") || "";
+  const [email, setEmail] = useState(storedEmail);
   const [error, setError] = useState(false);
 
   useEffect(() => {
@@ -29,6 +29,9 @@ function Email() {
     } else {
       setError(false);
     }
+
+    // Save to local storage
+    localStorage.setItem("blogpostEmail", email);
   }, [email]);
 
   const className = error ? "input input-error" : email && !error ? "input input-validated" : "input";

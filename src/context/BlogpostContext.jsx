@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext, useEffect } from "react";
 
 const BlogpostContext = createContext();
 
@@ -13,7 +13,14 @@ export const BlogpostProvider = ({ children }) => {
     email: "",
   };
 
-  const [data, setData] = useState(initialData);
+  // Retrieve data from local storage on component mount
+  const storedData = JSON.parse(localStorage.getItem("blogpostData")) || initialData;
+  const [data, setData] = useState(storedData);
+
+  useEffect(() => {
+    const { image, ...dataWithoutImage } = data;
+    localStorage.setItem("blogpostData", JSON.stringify(dataWithoutImage));
+  }, [data]);
 
   const updateData = (newData) => {
     setData((prevData) => ({ ...prevData, ...newData }));

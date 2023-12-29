@@ -1,5 +1,4 @@
 import React from "react";
-import useFetch from "use-http";
 
 import Categories from "../components/Categories";
 import Blogposts from "../components/Blogposts";

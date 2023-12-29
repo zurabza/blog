@@ -11,7 +11,8 @@ function Category() {
   const [categories, setCategories] = useState([]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  const [addedCategories, setAddedCategories] = useState([]);
+  const storedAddedCategories = JSON.parse(localStorage.getItem("blogpostAddedCategories")) || [];
+  const [addedCategories, setAddedCategories] = useState(storedAddedCategories);
 
   const { initializeData } = useApi();
   const { updateData } = useBlogpost();
@@ -27,7 +28,7 @@ function Category() {
     document.addEventListener("click", function (event) {
       const inputDiv = document.getElementById("inputDiv");
 
-      // If clicked outside dropdown, close dropdown 
+      // If clicked outside dropdown, close dropdown
       if (inputDiv && !inputDiv.contains(event.target)) {
         setDropdownOpen(false);
       }
@@ -56,6 +57,9 @@ function Category() {
   useEffect(() => {
     const categoriesIds = addedCategories.map((category) => category.id);
     updateData({ categories: categoriesIds });
+
+    // Save addedCategories to local storage
+    localStorage.setItem("blogpostAddedCategories", JSON.stringify(addedCategories));
   }, [addedCategories]);
 
   const inputClassname = addedCategories.length > 0 ? "bluefocus input input-validated" : "input";

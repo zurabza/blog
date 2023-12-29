@@ -80,6 +80,16 @@ function AddBlogpost() {
 
       if (sendData) {
         setOpenSuccessModal(true);
+
+        localStorage.removeItem("blogpostSelectedFileName");
+        localStorage.removeItem("blogpostFile");
+        localStorage.removeItem("blogpostAuthor");
+        localStorage.removeItem("blogpostTitle");
+        localStorage.removeItem("blogpostDescription");
+        localStorage.removeItem("blogpostPublishDate");
+        localStorage.removeItem("blogpostAddedCategories");
+        localStorage.removeItem("blogpostEmail");
+
         resetData();
       }
     }
