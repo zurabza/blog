@@ -1,0 +1,47 @@
+.container {
+  margin: 0 auto;
+  width: 50vw;
+  word-wrap: break-word;
+}
+
+.container img {
+  width: 100%;
+  object-fit: cover;
+  height: 375px;
+}
+
+.container .metadata {
+  margin-top: 2rem;
+}
+
+.container .metadata h4 {
+    font-size: 1.2rem;
+}
+
+.container .metadata h6 {
+    margin-top: .5rem;
+    font-weight: 50;
+    color: #85858D;
+    font-size: 1rem;
+}
+
+.container .title {
+    margin-top: 1.5rem;
+    font-size: 2.25rem;
+}
+
+.container .categories {
+    margin: 2rem 0;
+    display: flex;
+    overflow: auto;
+    padding-bottom: .5rem;
+}
+
+.container .categories button {
+    margin-right: 1.5rem;
+}
+
+.container .description {
+    font-size: 1.25rem;
+
+}
