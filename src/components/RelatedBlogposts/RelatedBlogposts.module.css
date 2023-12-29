@@ -1,0 +1,25 @@
+.container {
+  padding: 2.5rem 6rem;
+  padding-bottom: 25rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem 0;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+}
+
+.similarsContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.paginationIMG {
+  width: 4rem;
+  margin-left: 3rem;
+}
