@@ -34,9 +34,11 @@ function Blogposts() {
 
   return (
     <div className={styles.blogposts}>
-      {filteredBlogposts?.map((blog) => (
-        <Blogpost key={blog.id} blog={blog} />
-      ))}
+      {filteredBlogposts
+        ?.filter((blog) => new Date(blog.publish_date) < new Date())
+        .map((blog) => (
+          <Blogpost key={blog.id} blog={blog} />
+        ))}
     </div>
   );
 }
